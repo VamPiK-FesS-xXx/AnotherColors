@@ -14,7 +14,6 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  background-color: rgb(105, 55, 55);
 }
 .container-col .col-text {
   text-transform: uppercase;

@@ -7,46 +7,18 @@ import './style/style.css'
 library.add(fas)
 
 function App() {
-	const color = chroma.random().hex()
+	const color = Array.from({ length: 5 }, () => chroma.random().hex())
+	const ico = <FontAwesomeIcon icon='fa-solid fa-lock' />
 
 	return (
 		<>
-			<style>
-				{`
-				div { background-color: ${color} }
-				`}
-			</style>
 			<div className='container-col'>
-				<div className='col'>
-					<h2 className='col-text'>{color}</h2>
-					<button className='col-btn'>
-						<FontAwesomeIcon icon='fa-solid fa-lock' />
-					</button>
-				</div>
-				<div className='col'>
-					<h2 className='col-text'>{color}</h2>
-					<button className='col-btn'>
-						<FontAwesomeIcon icon='fa-solid fa-lock' />
-					</button>
-				</div>
-				<div className='col'>
-					<h2 className='col-text'>{color}</h2>
-					<button className='col-btn'>
-						<FontAwesomeIcon icon='fa-solid fa-lock' />
-					</button>
-				</div>
-				<div className='col'>
-					<h2 className='col-text'>{color}</h2>
-					<button className='col-btn'>
-						<FontAwesomeIcon icon='fa-solid fa-lock' />
-					</button>
-				</div>
-				<div className='col'>
-					<h2 className='col-text'>{color}</h2>
-					<button className='col-btn'>
-						<FontAwesomeIcon icon='fa-solid fa-lock' />
-					</button>
-				</div>
+				{color.map((color, index) => (
+					<div key={index} className='col' style={{ backgroundColor: color }}>
+						<h2 className='col-text'>{color}</h2>
+						<button className='col-btn'>{ico}</button>
+					</div>
+				))}
 			</div>
 		</>
 	)
