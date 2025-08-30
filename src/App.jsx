@@ -1,15 +1,25 @@
 import './style/style.css'
-import renderColors from './render-Colors/renderColor'
+import renderColors from './components/render-Colors/renderColor'
+import { useEffect, useState } from 'react'
 function App() {
-	document.addEventListener('keydown', event => {
-		if (event.code.toLocaleLowerCase() === 'space') {
-			renderColors()
-		}
-	})
+	const [colors, setColors] = useState(renderColors())
 
+	useEffect(() => {
+		const handleKeyDown = event => {
+			if (event.code === 'Space') {
+				setColors(renderColors()) // Обновляем состояние при нажатии пробела
+			}
+		}
+
+		document.addEventListener('keydown', handleKeyDown)
+
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown)
+		}
+	}, [])
 	return (
 		<>
-			<div className='container-col'>{renderColors()}</div>
+			<div className='container-col'>{colors}</div>
 		</>
 	)
 }
